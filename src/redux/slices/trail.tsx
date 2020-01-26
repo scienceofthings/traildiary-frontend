@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction} from "@reduxjs/toolkit";
 import { fetchTrails } from "../../api/trails";
 import { AsyncAction } from "../index";
 
@@ -8,7 +8,7 @@ export type Trail = {
         position: [number, number]
 }
 
-interface TrailVisibility {
+export type TrailVisibility = {
     [id: number]: boolean
 }
 
@@ -17,7 +17,6 @@ export type TrailState = {
     trails: Array<Trail>
     trailVisibility: TrailVisibility,
     error?: string | null
-    session?: string
 }
 
 const initialState: TrailState = {
@@ -30,22 +29,31 @@ const trailSlice = createSlice({
     name: 'trails',
     initialState,
     reducers: {
-        trailsLoading: {
-            reducer(state,action: PayloadAction<string>) {
-                state.loading = true;
-                state.error = null;
-                return state;
-            }
-        },
         trailsFetchSuccess: {
-            reducer(state, action: PayloadAction<Array<Trail>>) {
-                const trails = action.payload;
+            reducer(state, action) {
+                const trails: Trail[] = action.payload.trails;
                 state.loading = false;
                 state.error = null;
                 trails.forEach(trail => {
                     state.trails.push(trail);
                     state.trailVisibility[trail.id] = false;
                 });
+            },
+            prepare(trails: PayloadAction<Trail[]>) {
+                return {
+                    payload: {trails}
+                }
+            }
+        },
+        setVisibility:  {
+            reducer(state, action) {
+                state.loading = false;
+                state.error = null;
+                const { id, visible } = action.payload;
+                state.trailVisibility[id] = visible;
+            },
+            prepare(id: number, visible: boolean) {
+                return { payload: {id, visible } }
             }
         },
         trailsFetchFail: {
@@ -53,25 +61,23 @@ const trailSlice = createSlice({
                 state.loading = false;
                 state.error = action.payload;
                 return state;
+            },
+            prepare(errormessage: string) {
+                return {
+                    payload: { errormessage }
+                }
             }
         },
-       setVisibility:  {
-            reducer(state, action) {
-                state.loading = false;
+        trailsLoading: (state) => {
+                state.loading = true;
                 state.error = null;
-                const { id, visible } = action.payload;
-                state.trailVisibility[id] = visible;
-            },
-           prepare(id, visible) {
-               return { payload: {id, visible } }
-           }
-
-       }
-   }
+                return state;
+        }
+    }
 });
 
 
-export const { trailsLoading, trailsFetchSuccess, trailsFetchFail, setVisibility } = trailSlice.actions;
+export const { trailsFetchSuccess, setVisibility, trailsFetchFail, trailsLoading } = trailSlice.actions;
 export default trailSlice.reducer;
 
 export const loadTrails = (): AsyncAction<void> => async (dispatch, getState, {api}) => {

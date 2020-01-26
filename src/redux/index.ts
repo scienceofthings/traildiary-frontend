@@ -1,8 +1,7 @@
 import { Action, AnyAction } from 'redux'
 import { ThunkAction, ThunkDispatch } from 'redux-thunk'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
-import rootReducer from './reducers'
-import { TrailState } from "./slices/trail"
+import rootReducer from "./reducers";
 
 export type RootState = ReturnType<typeof rootReducer>
 type OptionalThunkArgument = { api: string }
@@ -21,5 +20,5 @@ export type DispatchAction<T extends AnyAction = Action> = ThunkDispatch<
     T
     >
 
-export const useTypedSelector: TypedUseSelectorHook<TrailState> = useSelector
+export const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector
 export const useTypedDispatch: () => DispatchAction = useDispatch
