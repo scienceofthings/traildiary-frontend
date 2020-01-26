@@ -1,5 +1,5 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
-import rootReducer from './slices/trail'
+import rootReducer from './reducers'
 
 const middleware = getDefaultMiddleware({
     thunk: {

@@ -1,11 +1,11 @@
 import React, {useRef, useEffect} from "react";
-import { useDispatch } from "react-redux";
 import {Map, Marker, Popup, TileLayer} from "react-leaflet";
 import L from "leaflet";
 import { setVisibility } from "../../redux/slices/trail";
 import "../../../node_modules/leaflet/dist/leaflet.css";
 import { Trail } from "../../redux/slices/trail";
-import {LeafletEvent, Map as MapFromLeaflet } from "leaflet";
+import { LeafletEvent } from "leaflet";
+import { useDispatch } from 'react-redux'
 
 export const pointerIcon = new L.Icon({
     iconUrl: require('../../../node_modules/leaflet/dist/images/marker-icon.png'),
@@ -20,18 +20,20 @@ type props = {
     trails: Array<Trail>
 }
 
-const LeafletMap: React.FunctionComponent<props> = ({trails}) => {
-    const mapReference = useRef<MapFromLeaflet>(null);
-    const dispatch = useDispatch();
+const TrailMap: React.FunctionComponent<props> = ({trails}) => {
+    const mapReference = useRef(null);
+    const dispatch = useDispatch()
 
-    const state = {
+
+    const initialPositionOfMap = {
         lat: 47.9959,
         lng: 7.85222,
         zoom: 10
     }
 
-    const updateTrailVisibility = (map: MapFromLeaflet) => {
+    const updateTrailVisibility = (map: Map) => {
         trails.forEach(trail => {
+            // @ts-ignore: Unreachable code error
             if (map.getBounds().contains(trail.position)) {
                 dispatch(setVisibility(trail.id, true));
             } else {
@@ -45,7 +47,8 @@ const LeafletMap: React.FunctionComponent<props> = ({trails}) => {
     }
 
     useEffect(() => {
-        if(mapReference && mapReference.current && mapReference.current.leafletElement) {
+        if(mapReference.current !== null) {
+            // @ts-ignore: Unreachable code error
             updateTrailVisibility(mapReference.current.leafletElement);
         }
 
@@ -55,9 +58,9 @@ const LeafletMap: React.FunctionComponent<props> = ({trails}) => {
         <Map
             ref={mapReference}
             style={{ height: "280px", width: "100%" }}
-            zoom={state.zoom}
+            zoom={initialPositionOfMap.zoom}
             onMoveEnd={handleMoveEnd}
-            center={[state.lat, state.lng]}>
+            center={[initialPositionOfMap.lat, initialPositionOfMap.lng]}>
             <TileLayer url="http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
 
             {trails && trails.length ? trails.map((trail) =>
@@ -71,4 +74,4 @@ const LeafletMap: React.FunctionComponent<props> = ({trails}) => {
     )
 }
 
-export default LeafletMap;
+export default TrailMap;
