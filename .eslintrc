@@ -1,0 +1,63 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true,
+        "node": true
+    },
+    "plugins": [
+        "@typescript-eslint",
+        "react",
+        "react-hooks",
+        "typescript-sort-keys"
+    ],
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:react/recommended",
+        "plugin:prettier/recommended",
+        "prettier/react",
+        "prettier/@typescript-eslint"
+    ],
+    "parserOptions": {
+        "sourceType": "module",
+        "ecmaVersion": 2018
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    },
+    "rules": {
+        "semi": "off",
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn",
+        "react/no-unescaped-entities": ["error", {"forbid": [">", "}"]}],
+        "require-atomic-updates": "off",
+        "@typescript-eslint/explicit-function-return-type": [
+            "warn", {
+                "allowExpressions": true,
+                "allowTypedFunctionExpressions": true,
+                "allowHigherOrderFunctions": true
+            }
+        ],
+        "react/prop-types": "off",
+        "@typescript-eslint/array-type": [
+            "error", {
+                "default": "array-simple"
+            }
+        ],
+        "@typescript-eslint/consistent-type-definitions": ["error", "type"]
+    },
+    "overrides": [{
+        "files": [ "src/api/schema.ts" ],
+        "rules": {
+            "@typescript-eslint/no-explicit-any": "off",
+            "typescript-sort-keys/interface": "error",
+            "typescript-sort-keys/string-enum": "error"
+        }
+    }]
+}

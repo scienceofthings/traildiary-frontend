@@ -1,32 +1,27 @@
-import React from "react"
-import {Trail} from "../../redux/slices/trail"
-import {TrailVisibility} from "./MapView";
+import React from 'react'
+import { Trail } from '../../redux/slices/trail'
+import { TrailVisibility } from './MapView'
 
 type MarkerListProps = {
-    trails: Trail[],
-    trailVisibility: TrailVisibility
+  trails: Trail[]
+  trailVisibility: TrailVisibility
 }
 
-const VisibleTrails: React.FunctionComponent<MarkerListProps> = ({trails, trailVisibility}) => {
-    const visibleTrails = trails.reduce((result: Trail[], trail: Trail) => {
-        if (trailVisibility[trail.id] === true) {
-            result.push(trail);
-        }
-        return result;
-    }, []);
+const VisibleTrails: React.FunctionComponent<MarkerListProps> = ({
+  trails,
+  trailVisibility,
+}) => {
+  const visibleTrails = trails.reduce((result: Trail[], trail: Trail) => {
+    if (trailVisibility[trail.id] === true) {
+      result.push(trail)
+    }
+    return result
+  }, [])
 
-    const listItems = visibleTrails.map(trail => {
-        return (<li key={trail.id}>{trail.title}</li>)
-    })
-        return (
-            <>
-            {visibleTrails.length ?
-                    listItems
-                    :
-                    <b>No Trails given</b>
-            }
-            </>
-        )
+  const listItems = visibleTrails.map((trail) => {
+    return <li key={trail.id}>{trail.title}</li>
+  })
+  return <>{visibleTrails.length ? listItems : <b>No Trails given</b>}</>
 }
 
-export default VisibleTrails;
+export default VisibleTrails
