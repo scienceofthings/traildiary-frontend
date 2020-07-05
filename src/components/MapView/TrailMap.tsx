@@ -1,15 +1,15 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react'
-import { LatLngBounds, Map, Marker, Popup, TileLayer } from 'react-leaflet'
+import { Map, Marker, Popup, TileLayer } from 'react-leaflet'
 import L from 'leaflet'
 import { Trail } from '../../redux/slices/trail'
 import '../../../node_modules/leaflet/dist/leaflet.css'
 import { LeafletEvent } from 'leaflet'
 
 export const pointerIcon = new L.Icon({
-  iconUrl: require('../../../node_modules/leaflet/dist/images/marker-icon.png'),
+  iconUrl: require('leaflet/dist/images/marker-icon.png'),
   iconAnchor: [5, 55],
   popupAnchor: [10, -44],
-  shadowUrl: '../../../node_modules/leaflet/dist/images/marker-shadow.png',
+  shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
   shadowSize: [68, 95],
   shadowAnchor: [20, 92],
 })
@@ -25,14 +25,16 @@ const TrailMap: React.FunctionComponent<props> = ({
   showTrail,
   hideTrail,
 }) => {
-  const mapReference = useRef<LatLngBounds>(null)
+  const mapReference = useRef<Map>(null)
   const [lat] = useState(47.9959)
   const [lng] = useState(7.85222)
   const [zoom] = useState(13)
 
   const updateTrailVisibility = useCallback(
-    (map: LatLngBounds) => {
+    (map: Map) => {
       trails.forEach((trail) => {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore: Unreachable code error
         if (map.getBounds().contains(trail.position)) {
           showTrail(trail.id)
         } else {
@@ -48,12 +50,10 @@ const TrailMap: React.FunctionComponent<props> = ({
   }
 
   useEffect(() => {
-    if (
-      mapReference.current !== null &&
-      mapReference.current.leafletElement !== null
-    ) {
-      updateTrailVisibility(mapReference.current.leafletElement)
-    }
+    if (mapReference.current === null) return
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore: Unreachable code error
+    updateTrailVisibility(mapReference.current.leafletElement as Map)
   }, [mapReference, updateTrailVisibility])
 
   return (
