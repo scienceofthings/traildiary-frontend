@@ -1,61 +1,45 @@
 import { createSlice, PayloadAction} from "@reduxjs/toolkit";
 import { fetchTrails } from "../../api/trails";
 import { AsyncAction } from "../index";
+import {LatLngLiteral} from "leaflet";
+
 
 export type Trail = {
         id: number,
         title: string,
-        position: [number, number]
+        position: LatLngLiteral
 }
 
-export type TrailVisibility = {
-    [id: number]: boolean
-}
-
-export type TrailState = {
+export type TrailsState = {
     loading: boolean
-    trails: Array<Trail>
-    trailVisibility: TrailVisibility,
     error?: string | null
+    trails: Trail[]
 }
 
-const initialState: TrailState = {
+const initialState: TrailsState = {
     loading: false,
-    trails: [],
-    trailVisibility: {}
+    trails: []
 }
 
 const trailSlice = createSlice({
     name: 'trails',
     initialState,
     reducers: {
-        trailsFetchSuccess: {
-            reducer(state, action) {
-                const trails: Trail[] = action.payload.trails;
-                state.loading = false;
-                state.error = null;
-                trails.forEach(trail => {
-                    state.trails.push(trail);
-                    state.trailVisibility[trail.id] = false;
-                });
-            },
-            prepare(trails: PayloadAction<Trail[]>) {
-                return {
-                    payload: {trails},
-                    meta: 'satisfyTypescript',
-                    error: 'satisfyTypescript'
-                }
+        trailsFetchSuccess: (state, action: PayloadAction<Trail[]>) => {
+            return {
+                ...state,
+                loading: false,
+                trails: action.payload
             }
         },
         setVisibility:  {
             reducer(state, action) {
-                state.loading = false;
-                state.error = null;
-                const { id, visible } = action.payload;
-                state.trailVisibility[id] = visible;
+                state.trails[action.payload.id] = action.payload.isVisible
             },
-            prepare(id: number, visible: boolean) {
-                return { payload: {id, visible },
+            // We need a prepare function as we need more than one argument for the setVisibility action.
+            prepare(id: number, isVisible: boolean) {
+                return {
+                    payload: {id, isVisible },
                     meta: 'satisfyTypescript',
                     error: 'satisfyTypescript'
                 }
