@@ -41,7 +41,9 @@ const trailSlice = createSlice({
             },
             prepare(trails: PayloadAction<Trail[]>) {
                 return {
-                    payload: {trails}
+                    payload: {trails},
+                    meta: 'satisfyTypescript',
+                    error: 'satisfyTypescript'
                 }
             }
         },
@@ -53,7 +55,10 @@ const trailSlice = createSlice({
                 state.trailVisibility[id] = visible;
             },
             prepare(id: number, visible: boolean) {
-                return { payload: {id, visible } }
+                return { payload: {id, visible },
+                    meta: 'satisfyTypescript',
+                    error: 'satisfyTypescript'
+                }
             }
         },
         trailsFetchFail: {
@@ -64,7 +69,9 @@ const trailSlice = createSlice({
             },
             prepare(errormessage: string) {
                 return {
-                    payload: { errormessage }
+                    payload: { errormessage },
+                    meta: 'satisfyTypescript',
+                    error: 'satisfyTypescript'
                 }
             }
         },
