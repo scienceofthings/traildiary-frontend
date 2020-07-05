@@ -2,11 +2,17 @@
   {
     "id": 101,
     "title": "Oberlinden",
-    "position": [47.9959, 7.85222]
+    "position": {
+      "lat": 48.0020,
+      "lng": 7.85222
+    }
   },
   {
     "id": 200,
     "title": "Kartoffelmarkt",
-    "position": [48.020, 7.85222]
+    "position": {
+      "lat": 47.9959,
+      "lng": 7.85222
+    }
   }
 ]
