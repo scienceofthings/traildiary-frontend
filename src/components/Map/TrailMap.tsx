@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState, useCallback } from 'react'
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet'
 import L from 'leaflet'
 import { Trail } from '../../redux/slices/trail'
-import '../../../node_modules/leaflet/dist/leaflet.css'
+import 'leaflet/dist/leaflet.css'
 import { LeafletEvent } from 'leaflet'
 
 export const pointerIcon = new L.Icon({
