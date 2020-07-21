@@ -1,6 +1,6 @@
 import React from 'react'
 import { Trail } from '../../redux/slices/trail'
-import { TrailVisibility } from './MapView'
+import { TrailVisibility } from '../pages/Map/Map'
 
 type MarkerListProps = {
   trails: Trail[]

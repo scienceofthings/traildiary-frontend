@@ -1,11 +1,11 @@
 import React, { useCallback, useState } from 'react'
-import TrailMap from './TrailMap'
-import VisibleTrails from './VisibleTrails'
-import { useTypedSelector } from '../../redux'
+import TrailMap from '../../Map/TrailMap'
+import VisibleTrails from '../../Map/VisibleTrails'
+import { useTypedSelector } from '../../../redux'
 
 export type TrailVisibility = Record<number, boolean>
 
-const MapView: React.FunctionComponent = () => {
+const Map: React.FunctionComponent = () => {
   const trails = useTypedSelector((state) => state.trails.trails)
   const [trailVisibility, setTrailVisibility] = useState<TrailVisibility>({})
   const showTrail = useCallback((trailId: number) => {
@@ -39,4 +39,4 @@ const MapView: React.FunctionComponent = () => {
   )
 }
 
-export default MapView
+export default Map
