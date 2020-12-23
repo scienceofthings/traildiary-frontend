@@ -3,7 +3,7 @@ import { hot } from 'react-hot-loader/root'
 import { loadTrails } from '../../redux/slices/trail'
 import { useTypedDispatch } from '../../redux'
 import './styles.module.scss'
-import Map from '../pages/Map/Map'
+import MapSearch from '../pages/MapSearch/MapSearch'
 
 const App: React.FunctionComponent = () => {
   const dispatch = useTypedDispatch()
@@ -12,7 +12,7 @@ const App: React.FunctionComponent = () => {
     dispatch(loadTrails())
   }, [dispatch])
 
-  return <Map />
+  return <MapSearch />
 }
 
 export default hot(App)
