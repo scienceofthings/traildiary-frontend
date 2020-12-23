@@ -1,0 +1,47 @@
+import React, { useCallback, useEffect, useState } from 'react'
+import { Trail } from '../../../redux/slices/trail'
+
+type MarkerListProps = {
+  trails: Trail[]
+  map: L.Map
+}
+
+export type TrailVisibility = Record<number, boolean>
+
+const VisibleTrails: React.FunctionComponent<MarkerListProps> = ({
+  trails,
+  map,
+}) => {
+  const [visibleTrails, setVisibleTrails] = useState<Trail[]>([])
+
+  const onMoveEnd = useCallback(() => {
+    setVisibleTrails(
+      trails.filter((trail: Trail) => {
+        return map.getBounds().contains(trail.position)
+      })
+    )
+  }, [map, trails])
+
+  useEffect(() => {
+    onMoveEnd()
+    map.on('move', onMoveEnd)
+    return () => {
+      map.off('move', onMoveEnd)
+    }
+  }, [map, onMoveEnd])
+
+  const listItems = visibleTrails.map((trail) => {
+    return <li key={trail.id}>{trail.title}</li>
+  })
+  return (
+    <>
+      {visibleTrails.length > 0 ? (
+        <ul>{listItems}</ul>
+      ) : (
+        <>Keine Trails vorhanden</>
+      )}
+    </>
+  )
+}
+
+export default VisibleTrails
