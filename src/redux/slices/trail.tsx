@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { fetchTrails } from '../../api/trails'
+import { fetchTrails } from '../../api/trail'
 import { AsyncAction } from '../index'
 import { LatLngLiteral } from 'leaflet'
 
