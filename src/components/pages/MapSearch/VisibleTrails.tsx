@@ -1,5 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { Trail } from '../../../redux/slices/trail'
+import { composeTrailDetailPageUri } from '../../../misc/uri'
+import { Link } from 'wouter'
 
 type MarkerListProps = {
   trails: Trail[]
@@ -31,7 +33,11 @@ const VisibleTrails: React.FunctionComponent<MarkerListProps> = ({
   }, [map, onMoveEnd])
 
   const listItems = visibleTrails.map((trail) => {
-    return <li key={trail.id}>{trail.title}</li>
+    return (
+      <li key={trail.id}>
+        <Link to={composeTrailDetailPageUri(trail.id)}>{trail.title}</Link>
+      </li>
+    )
   })
   return (
     <>

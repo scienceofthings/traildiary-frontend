@@ -7,6 +7,10 @@ export type Trail = {
   id: number
   title: string
   position: LatLngLiteral
+  description: string
+  gpxFile: string
+  categoryId: number
+  images: string[]
 }
 
 export type TrailsState = {
