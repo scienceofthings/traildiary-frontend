@@ -1,12 +1,21 @@
 import React from 'react'
 import { Nav, Navbar } from 'react-bootstrap'
+import { Link } from 'wouter'
+import {
+  composeCategoriesPageUri,
+  composeMapSearchPageUri,
+} from '../../misc/uri'
 
 const Navigation: React.FunctionComponent = () => {
   return (
     <Navbar variant="light" bg="light">
       <Nav>
-        <Nav.Link href="/">Karte</Nav.Link>
-        <Nav.Link href="/list">Liste</Nav.Link>
+        <Nav.Link as={Link} to={composeMapSearchPageUri()}>
+          Karte
+        </Nav.Link>
+        <Nav.Link as={Link} to={composeCategoriesPageUri()}>
+          Liste
+        </Nav.Link>
       </Nav>
     </Navbar>
   )

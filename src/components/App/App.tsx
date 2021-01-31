@@ -8,6 +8,7 @@ import MapSearch from '../pages/MapSearch/MapSearch'
 import Navigation from './Navigation'
 import Detail from '../pages/Detail/Detail'
 import Categories from '../pages/Categories/Categories'
+import { Container } from 'react-bootstrap'
 
 const App: React.FunctionComponent = () => {
   const dispatch = useTypedDispatch()
@@ -18,16 +19,22 @@ const App: React.FunctionComponent = () => {
 
   return (
     <>
-      <Navigation />
-      <Route path="/">
-        <MapSearch />
-      </Route>
-      <Route path="/list">
-        <Categories />
-      </Route>
-      <Route path="/detail/:trailId">
-        {(params) => <Detail trailId={parseInt(params.trailId)} />}
-      </Route>
+      <header>
+        <Navigation />
+      </header>
+      <Container>
+        <main>
+          <Route path="/">
+            <MapSearch />
+          </Route>
+          <Route path="/categories">
+            <Categories />
+          </Route>
+          <Route path="/trails/:trailId">
+            {(params) => <Detail trailId={parseInt(params.trailId)} />}
+          </Route>
+        </main>
+      </Container>
     </>
   )
 }
