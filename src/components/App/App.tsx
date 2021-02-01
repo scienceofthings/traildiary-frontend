@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { hot } from 'react-hot-loader/root'
 import { Route } from 'wouter'
-import { loadTrails } from '../../redux/slices/trail'
-import { useTypedDispatch } from '../../redux'
+import { loadTrails, Trail } from '../../redux/slices/trail'
+import { useTypedDispatch, useTypedSelector } from '../../redux'
 import './styles.module.scss'
 import MapSearch from '../pages/MapSearch/MapSearch'
 import Navigation from './Navigation'
@@ -17,6 +17,14 @@ const App: React.FunctionComponent = () => {
     dispatch(loadTrails())
   }, [dispatch])
 
+  const trails = useTypedSelector((state) => state.trails.trails)
+
+  const getTrailById = (id: number): Trail | undefined => {
+    const indexOfTrail = trails.findIndex((trail) => trail.id === id)
+    if (indexOfTrail === -1) return undefined
+    return trails[indexOfTrail]
+  }
+
   return (
     <>
       <header>
@@ -28,10 +36,12 @@ const App: React.FunctionComponent = () => {
             <MapSearch />
           </Route>
           <Route path="/categories">
-            <Categories />
+            <Categories trails={trails} />
           </Route>
           <Route path="/trails/:trailId">
-            {(params) => <Detail trailId={parseInt(params.trailId)} />}
+            {(params) => (
+              <Detail trail={getTrailById(parseInt(params.trailId))} />
+            )}
           </Route>
         </main>
       </Container>

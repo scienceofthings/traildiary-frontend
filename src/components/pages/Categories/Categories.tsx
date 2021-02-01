@@ -5,14 +5,17 @@ import { loadCategories } from '../../../redux/slices/category'
 import { Link } from 'wouter'
 import { composeTrailDetailPageUri } from '../../../misc/uri'
 
-const Categories: React.FunctionComponent = () => {
+type CategoryPropsType = {
+  trails: Trail[]
+}
+
+const Categories: React.FunctionComponent<CategoryPropsType> = ({ trails }) => {
   const dispatch = useTypedDispatch()
 
   useEffect(() => {
     dispatch(loadCategories())
   }, [dispatch])
 
-  const trails = useTypedSelector((state) => state.trails.trails)
   const categories = useTypedSelector((state) => state.categories.categories)
   const getTrailsForCategory = (id: number): Trail[] => {
     return trails.filter((trail) => trail.categoryId === id)
