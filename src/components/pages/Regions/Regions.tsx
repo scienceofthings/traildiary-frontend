@@ -9,7 +9,7 @@ type CategoryPropsType = {
   trails: Trail[]
 }
 
-const Categories: React.FunctionComponent<CategoryPropsType> = ({ trails }) => {
+const Regions: React.FunctionComponent<CategoryPropsType> = ({ trails }) => {
   const dispatch = useTypedDispatch()
 
   useEffect(() => {
@@ -38,4 +38,4 @@ const Categories: React.FunctionComponent<CategoryPropsType> = ({ trails }) => {
   )
 }
 
-export default Categories
+export default Regions
