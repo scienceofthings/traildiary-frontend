@@ -3,6 +3,8 @@ import { fetchTrails } from '../../api/trail'
 import { AsyncAction } from '../index'
 import { LatLngLiteral } from 'leaflet'
 
+export type ResponsiveImageSources = string[]
+
 export type Trail = {
   id: number
   title: string
@@ -10,7 +12,7 @@ export type Trail = {
   description: string
   gpxFile: string
   categoryId: number
-  images: string[]
+  images: ResponsiveImageSources[]
 }
 
 export type TrailsState = {
