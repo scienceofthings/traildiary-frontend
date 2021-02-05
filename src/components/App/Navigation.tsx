@@ -14,7 +14,7 @@ const Navigation: React.FunctionComponent = () => {
           Karte
         </Nav.Link>
         <Nav.Link as={Link} to={composeCategoriesPageUri()}>
-          Liste
+          Nach Region
         </Nav.Link>
       </Nav>
     </Navbar>

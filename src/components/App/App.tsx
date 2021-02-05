@@ -7,7 +7,7 @@ import './styles.module.scss'
 import MapSearch from '../pages/MapSearch/MapSearch'
 import Navigation from './Navigation'
 import Detail from '../pages/Detail/Detail'
-import Categories from '../pages/Categories/Categories'
+import Regions from '../pages/Regions/Regions'
 import { Container } from 'react-bootstrap'
 
 const App: React.FunctionComponent = () => {
@@ -36,7 +36,7 @@ const App: React.FunctionComponent = () => {
             <MapSearch />
           </Route>
           <Route path="/categories">
-            <Categories trails={trails} />
+            <Regions trails={trails} />
           </Route>
           <Route path="/trails/:trailId">
             {(params) => (
