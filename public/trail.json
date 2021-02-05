@@ -1,11 +1,37 @@
 [
   {
     "id": 101,
-    "title": "Oberlinden",
-    "description": "Description Oberlinden",
+    "title": "Abrutschfels Moosch",
+    "description": "Description Abrutschfels Moosch",
     "gpxFile": "oberlinden.gpx",
     "categoryId": 1,
-    "images": ["1.jpg", "2.jpg"],
+    "images": [
+      [
+        "/diaryFiles/AbrutschfelsMoosch/responsiveImages/1_w210.jpg",
+        "/diaryFiles/AbrutschfelsMoosch/responsiveImages/1_w715.jpg",
+        "/diaryFiles/AbrutschfelsMoosch/responsiveImages/1_w1020.jpg"
+      ],
+      [
+        "/diaryFiles/AbrutschfelsMoosch/responsiveImages/2_w210.jpg",
+        "/diaryFiles/AbrutschfelsMoosch/responsiveImages/2_w715.jpg",
+        "/diaryFiles/AbrutschfelsMoosch/responsiveImages/2_w1020.jpg"
+      ],
+      [
+        "/diaryFiles/AbrutschfelsMoosch/responsiveImages/3_w210.jpg",
+        "/diaryFiles/AbrutschfelsMoosch/responsiveImages/3_w715.jpg",
+        "/diaryFiles/AbrutschfelsMoosch/responsiveImages/3_w1020.jpg"
+      ],
+      [
+        "/diaryFiles/AbrutschfelsMoosch/responsiveImages/4_w210.jpg",
+        "/diaryFiles/AbrutschfelsMoosch/responsiveImages/4_w715.jpg",
+        "/diaryFiles/AbrutschfelsMoosch/responsiveImages/4_w1020.jpg"
+      ],
+      [
+        "/diaryFiles/AbrutschfelsMoosch/responsiveImages/5_w210.jpg",
+        "/diaryFiles/AbrutschfelsMoosch/responsiveImages/5_w715.jpg",
+        "/diaryFiles/AbrutschfelsMoosch/responsiveImages/5_w1020.jpg"
+      ]
+    ],
     "position": {
       "lat": 48.002,
       "lng": 7.85222
