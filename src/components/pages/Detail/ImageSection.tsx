@@ -36,16 +36,14 @@ const ImageSection: React.FunctionComponent<ImageSectionProps> = ({
       </Modal>
       <Row>
         {images.map((image) => (
-          <>
-            <Col lg={3} md={4} key={image[0]}>
-              <a
-                href={image[2]}
-                onClick={(event) => onImageModalShow(image[2], event)}
-              >
-                <ResponsiveImage image={image} />
-              </a>
-            </Col>
-          </>
+          <Col lg={3} md={4} key={image[0]}>
+            <a
+              href={image[2]}
+              onClick={(event) => onImageModalShow(image[2], event)}
+            >
+              <ResponsiveImage image={image} />
+            </a>
+          </Col>
         ))}
       </Row>
     </>
