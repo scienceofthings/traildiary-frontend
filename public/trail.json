@@ -1,52 +1,203 @@
 [
   {
-    "id": 101,
+    "id": 1,
     "title": "Abrutschfels Moosch",
-    "description": "Description Abrutschfels Moosch",
-    "gpxFile": "oberlinden.gpx",
-    "categoryId": 1,
-    "images": [
+    "description": "dfgz3kkf36p5l",
+    "technique": "dfg",
+    "todo": "dfg",
+    "directory": "AbrutschfelsMoosch",
+    "region": "http://127.0.0.1:8000/regions/1/",
+    "gpx_file_name": "AbrutschfelsMoosch.gpx",
+    "gpx_points": [
       [
-        "/diaryFiles/AbrutschfelsMoosch/responsiveImages/1_w210.jpg",
-        "/diaryFiles/AbrutschfelsMoosch/responsiveImages/1_w715.jpg",
-        "/diaryFiles/AbrutschfelsMoosch/responsiveImages/1_w1020.jpg"
+        47.891426,
+        7.072828
       ],
       [
-        "/diaryFiles/AbrutschfelsMoosch/responsiveImages/2_w210.jpg",
-        "/diaryFiles/AbrutschfelsMoosch/responsiveImages/2_w715.jpg",
-        "/diaryFiles/AbrutschfelsMoosch/responsiveImages/2_w1020.jpg"
+        47.891708,
+        7.073315
       ],
       [
-        "/diaryFiles/AbrutschfelsMoosch/responsiveImages/3_w210.jpg",
-        "/diaryFiles/AbrutschfelsMoosch/responsiveImages/3_w715.jpg",
-        "/diaryFiles/AbrutschfelsMoosch/responsiveImages/3_w1020.jpg"
+        47.889832,
+        7.074035
       ],
       [
-        "/diaryFiles/AbrutschfelsMoosch/responsiveImages/4_w210.jpg",
-        "/diaryFiles/AbrutschfelsMoosch/responsiveImages/4_w715.jpg",
-        "/diaryFiles/AbrutschfelsMoosch/responsiveImages/4_w1020.jpg"
+        47.888245,
+        7.073736
       ],
       [
-        "/diaryFiles/AbrutschfelsMoosch/responsiveImages/5_w210.jpg",
-        "/diaryFiles/AbrutschfelsMoosch/responsiveImages/5_w715.jpg",
-        "/diaryFiles/AbrutschfelsMoosch/responsiveImages/5_w1020.jpg"
+        47.88702,
+        7.075803
+      ],
+      [
+        47.886086,
+        7.076324
+      ],
+      [
+        47.885529,
+        7.075832
+      ],
+      [
+        47.884121,
+        7.075755
+      ],
+      [
+        47.882244,
+        7.07353
+      ],
+      [
+        47.880219,
+        7.073105
+      ],
+      [
+        47.877995,
+        7.073517
+      ],
+      [
+        47.876591,
+        7.072604
+      ],
+      [
+        47.874001,
+        7.072832
+      ],
+      [
+        47.872101,
+        7.072178
+      ],
+      [
+        47.871681,
+        7.071145
+      ],
+      [
+        47.870762,
+        7.07044
+      ],
+      [
+        47.869972,
+        7.068823
+      ],
+      [
+        47.868938,
+        7.067658
+      ],
+      [
+        47.868534,
+        7.067505
+      ],
+      [
+        47.867569,
+        7.068133
+      ],
+      [
+        47.866455,
+        7.067757
+      ],
+      [
+        47.863728,
+        7.064548
+      ],
+      [
+        47.863541,
+        7.063332
+      ],
+      [
+        47.862671,
+        7.061967
+      ],
+      [
+        47.863419,
+        7.062477
+      ],
+      [
+        47.862854,
+        7.061079
+      ],
+      [
+        47.863071,
+        7.061121
+      ],
+      [
+        47.862991,
+        7.060838
+      ],
+      [
+        47.861694,
+        7.0603
+      ],
+      [
+        47.860107,
+        7.058338
+      ],
+      [
+        47.860378,
+        7.05829
+      ],
+      [
+        47.86013,
+        7.05759
+      ],
+      [
+        47.859119,
+        7.057765
+      ],
+      [
+        47.860027,
+        7.056493
+      ],
+      [
+        47.862038,
+        7.057145
+      ],
+      [
+        47.864044,
+        7.056042
+      ],
+      [
+        47.863152,
+        7.054578
+      ],
+      [
+        47.86211,
+        7.054081
+      ],
+      [
+        47.861763,
+        7.051772
+      ],
+      [
+        47.86047,
+        7.049312
       ]
     ],
-    "position": {
-      "lat": 48.002,
-      "lng": 7.85222
-    }
-  },
-  {
-    "id": 200,
-    "title": "Kartoffelmarkt",
-    "description": "Description Kartoffelmarkt",
-    "gpxFile": "kartoffelmarkt.gpx",
-    "categoryId": 1,
-    "images": ["3.jpg", "4.jpg"],
-    "position": {
-      "lat": 47.9959,
-      "lng": 7.85222
-    }
+    "start_position_lat": 47.891426,
+    "start_position_lng": 47.891426,
+    "images": [
+      [
+        "1_w1020.jpg",
+        "1_w210.jpg",
+        "1_w715.jpg"
+      ],
+      [
+        "2_w1020.jpg",
+        "2_w210.jpg",
+        "2_w715.jpg"
+      ],
+      [
+        "3_w1020.jpg",
+        "3_w210.jpg",
+        "3_w715.jpg"
+      ],
+      [
+        "4_w1020.jpg",
+        "4_w210.jpg",
+        "4_w715.jpg"
+      ],
+      [
+        "5_w1020.jpg",
+        "5_w210.jpg",
+        "5_w715.jpg"
+      ]
+    ]
   }
 ]

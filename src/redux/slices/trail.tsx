@@ -8,10 +8,15 @@ export type ResponsiveImageSources = string[]
 export type Trail = {
   id: number
   title: string
-  position: LatLngLiteral
   description: string
-  gpxFile: string
-  categoryId: number
+  technique: string
+  todo: string
+  directory: string
+  region: string
+  gpx_file_name: string
+  gpx_points: LatLngLiteral[]
+  start_position_lat: number
+  start_position_lng: number
   images: ResponsiveImageSources[]
 }
 
