@@ -14,9 +14,7 @@
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
         "plugin:react/recommended",
-        "plugin:prettier/recommended",
-        "prettier/react",
-        "prettier/@typescript-eslint"
+        "prettier"
     ],
     "parserOptions": {
         "sourceType": "module",
