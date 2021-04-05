@@ -15,8 +15,7 @@ export type Trail = {
   region: string
   gpx_file_name: string
   gpx_points: LatLngLiteral[]
-  start_position_lat: number
-  start_position_lng: number
+  start_position_lat: [number, number]
   images: ResponsiveImageSources[]
 }
 
