@@ -25,6 +25,7 @@
       "last 1 safari version"
     ]
   },
+  "proxy": "http://localhost:8000",
   "devDependencies": {
     "@hot-loader/react-dom": "17.0.1",
     "@reduxjs/toolkit": "^1.5.1",

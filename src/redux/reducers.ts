@@ -1,10 +1,10 @@
 import { combineReducers } from '@reduxjs/toolkit'
 import trailsReducer from './slices/trail'
-import categoryReducer from './slices/category'
+import categoryReducer from './slices/regions'
 
 const rootReducer = combineReducers({
   trails: trailsReducer,
-  categories: categoryReducer,
+  regions: categoryReducer,
 })
 
 export default rootReducer

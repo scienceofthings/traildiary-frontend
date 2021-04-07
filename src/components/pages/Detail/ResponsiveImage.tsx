@@ -1,5 +1,5 @@
 import React from 'react'
-import { ResponsiveImageSources } from '../../../redux/slices/trail'
+import {ResponsiveImageSources} from "../../../redux/slices/trail";
 
 type ResponsiveImageProps = {
   image: ResponsiveImageSources
