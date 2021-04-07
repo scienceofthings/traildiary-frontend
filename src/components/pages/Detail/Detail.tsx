@@ -28,6 +28,13 @@ const Detail: React.FunctionComponent<DetailProps> = ({ trailId }) => {
           <DetailMap trail={trailDetails} />
         </Col>
       </Row>
+        <Row>
+            <Col>
+                <a href={trailDetails.gpx_file_name}>
+                    <Button>Download GPX</Button>
+                </a>
+            </Col>
+        </Row>
       <Row>
         <Col>
           <h1>{trailDetails.title}</h1>
@@ -35,21 +42,28 @@ const Detail: React.FunctionComponent<DetailProps> = ({ trailId }) => {
       </Row>
       <Row>
         <Col>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: trailDetails.description,
-            }}
-          />
+          <h2>Beschreibung</h2>
+          {trailDetails.description}
         </Col>
       </Row>
+      {trailDetails.technique.length > 0 && (
+        <Row>
+          <Col>
+              <h2>Technik</h2>
+            {trailDetails.technique}
+          </Col>
+        </Row>
+        )}
+        {trailDetails.todo.length > 0 && (
+            <Row>
+                <Col>
+                    <h2>Todo</h2>
+                    {trailDetails.todo}
+                </Col>
+            </Row>
+        )}
       {trailDetails.images.length > 0 && <ImageSection images={trailDetails.images} />}
-      <Row>
-        <Col>
-          <a href={trailDetails.gpx_file_name}>
-            <Button>Download GPX</Button>
-          </a>
-        </Col>
-      </Row>
+
     </>
   )
 }
