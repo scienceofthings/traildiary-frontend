@@ -6,6 +6,8 @@ import 'leaflet/dist/leaflet.css'
 import 'leaflet/dist/leaflet.css'
 import icon from 'leaflet/dist/images/marker-icon.png'
 import iconShadow from 'leaflet/dist/images/marker-shadow.png'
+import {composeTrailDetailPageUri} from "../../../misc/uri";
+import {Link} from "wouter";
 
 // https://github.com/PaulLeCam/react-leaflet/issues/453
 const DefaultIcon = L.icon({
@@ -38,7 +40,7 @@ const TrailMap: React.FunctionComponent<props> = ({ trails, setMap }) => {
       {trails && trails.length
         ? trails.map((trail) => (
             <Marker position={trail.start_position} key={trail.id}>
-              <Popup>{trail.title}</Popup>
+              <Popup><Link to={composeTrailDetailPageUri(trail.id)}>{trail.title}</Link></Popup>
             </Marker>
           ))
         : ''}
