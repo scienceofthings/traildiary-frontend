@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { hot } from 'react-hot-loader/root'
 import { Route } from 'wouter'
-import { loadTrails, Trail } from '../../redux/slices/trail'
 import { useTypedDispatch, useTypedSelector } from '../../redux'
 import './styles.module.scss'
 import MapSearch from '../pages/MapSearch/MapSearch'
@@ -9,21 +8,17 @@ import Navigation from './Navigation'
 import Detail from '../pages/Detail/Detail'
 import Regions from '../pages/Regions/Regions'
 import { Container } from 'react-bootstrap'
+import {fetchTrails} from "../../redux/api/fetchTrails";
+import {selectTrailsData} from "../../redux/slices/trail";
 
 const App: React.FunctionComponent = () => {
   const dispatch = useTypedDispatch()
+  const trails = useTypedSelector(selectTrailsData)
 
   useEffect(() => {
-    dispatch(loadTrails())
-  }, [dispatch])
-
-  const trails = useTypedSelector((state) => state.trails.trails)
-
-  const getTrailById = (id: number): Trail | undefined => {
-    const indexOfTrail = trails.findIndex((trail) => trail.id === id)
-    if (indexOfTrail === -1) return undefined
-    return trails[indexOfTrail]
-  }
+    if (trails.length > 0 ) return
+    dispatch(fetchTrails())
+  }, [dispatch, trails])
 
   return (
     <>
@@ -40,7 +35,7 @@ const App: React.FunctionComponent = () => {
           </Route>
           <Route path="/trails/:trailId">
             {(params) => (
-              <Detail trail={getTrailById(parseInt(params.trailId))} />
+              <Detail trailId={parseInt(params.trailId)} />
             )}
           </Route>
         </main>

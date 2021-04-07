@@ -1,39 +1,44 @@
 import React, { useEffect } from 'react'
 import { useTypedDispatch, useTypedSelector } from '../../../redux'
 import { Trail } from '../../../redux/slices/trail'
-import { loadCategories } from '../../../redux/slices/category'
 import { Link } from 'wouter'
 import { composeTrailDetailPageUri } from '../../../misc/uri'
+import {fetchRegions} from "../../../redux/api/fetchRegions";
+import {selectRegionsData} from "../../../redux/slices/regions";
 
 type CategoryPropsType = {
-  trails: Trail[]
+  trails: Trail[] | undefined
 }
 
 const Regions: React.FunctionComponent<CategoryPropsType> = ({ trails }) => {
   const dispatch = useTypedDispatch()
+  const regions = useTypedSelector(selectRegionsData)
 
   useEffect(() => {
-    dispatch(loadCategories())
-  }, [dispatch])
+    if (regions.length > 0) return
+    dispatch(fetchRegions())
+  }, [dispatch, regions])
 
-  const categories = useTypedSelector((state) => state.categories.categories)
   const getTrailsForCategory = (id: number): Trail[] => {
-    return trails.filter((trail) => trail.categoryId === id)
+    if (trails === undefined) return []
+    return trails.filter((trail) => trail.region === id)
   }
   return (
     <>
-      {categories.map((category) => (
-        <dl className="row" key={category.id}>
-          <dt className="col">{category.title}</dt>
-          {getTrailsForCategory(category.id).map((trail) => (
-            <dd className="col" key={trail.id}>
-              <Link to={composeTrailDetailPageUri(trail.id)}>
-                {trail.title}
-              </Link>
-            </dd>
-          ))}
-        </dl>
-      ))}
+      {regions.map((region) => (
+          <dl className="row" key={region.id}>
+            <dt className="col">{region.title}</dt>
+            {getTrailsForCategory(region.id).length === 0 && <div>Keine Trails gefunden</div>}
+            {getTrailsForCategory(region.id).map((trail) => (
+                <dd className="col" key={trail.id}>
+                  <Link to={composeTrailDetailPageUri(trail.id)}>
+                    {trail.title}
+                  </Link>
+                </dd>
+            ))}
+          </dl>
+      ))
+      }
     </>
   )
 }

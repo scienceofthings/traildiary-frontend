@@ -19,7 +19,7 @@ const VisibleTrails: React.FunctionComponent<MarkerListProps> = ({
   const onMoveEnd = useCallback(() => {
     setVisibleTrails(
       trails.filter((trail: Trail) => {
-        return map.getBounds().contains(trail.position)
+        return map.getBounds().contains(trail.start_position)
       })
     )
   }, [map, trails])

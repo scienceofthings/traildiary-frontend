@@ -37,7 +37,7 @@ const TrailMap: React.FunctionComponent<props> = ({ trails, setMap }) => {
       />
       {trails && trails.length
         ? trails.map((trail) => (
-            <Marker position={trail.position} key={trail.id}>
+            <Marker position={trail.start_position} key={trail.id}>
               <Popup>{trail.title}</Popup>
             </Marker>
           ))

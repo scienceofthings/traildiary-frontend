@@ -3,11 +3,12 @@ import TrailMap from './TrailMap'
 import VisibleTrails from './VisibleTrails'
 import { useTypedSelector } from '../../../redux'
 import L from 'leaflet'
+import {selectTrailsData} from "../../../redux/slices/trail";
 
 const MapSearch: React.FunctionComponent = () => {
   const [map, setMap] = useState<L.Map>()
 
-  const trails = useTypedSelector((state) => state.trails.trails)
+  const trails = useTypedSelector(selectTrailsData)
 
   return (
     <>
