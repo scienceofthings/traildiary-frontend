@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { LatLngLiteral } from 'leaflet'
-import { Regions } from "./regions";
+import { Region } from "./region";
 import {fetchTrail} from "../api/fetchTrail";
 import {fetchTrails} from "../api/fetchTrails";
 import {RootState} from "../index";
@@ -16,7 +16,7 @@ export type ResponsiveImageSources = [string, string, string]
 export type Trail = {
   id: number
   title: string
-  region: Regions["id"]
+  region: Region["id"]
   start_position: [number, number]
 }
 
@@ -38,7 +38,7 @@ const initialState: TrailsSlice = {
   list: {
     error: false,
     pending: false,
-    data: []
+    data: undefined
   },
   details: {},
 }
@@ -91,8 +91,7 @@ const trailsSlice = createSlice({
   })
 })
 
-export const selectTrailsData = (state: RootState): Trail[] => {
-  if (state.trails.list.data === undefined) return []
+export const selectTrailsData = (state: RootState): Trail[] | undefined => {
   return state.trails.list.data
 }
 

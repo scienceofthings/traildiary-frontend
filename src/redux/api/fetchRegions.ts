@@ -1,8 +1,8 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import {Regions} from "../slices/regions";
+import {Region} from "../slices/region";
 import {getRegionsEndpoint} from "../../api/regions";
 
-export const fetchRegions = createAsyncThunk<Regions[]>(
+export const fetchRegions = createAsyncThunk<Region[]>(
     'regions/fetchRegions',
     async (arg, thunkApi) => {
     const response = await fetch(getRegionsEndpoint(), {

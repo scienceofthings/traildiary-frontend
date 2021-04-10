@@ -1,21 +1,18 @@
 import { createSlice,  } from '@reduxjs/toolkit'
 import { RootState} from '../index'
 import {fetchRegions} from "../api/fetchRegions";
+import {ErrorAndPendingAwareState} from "./trail";
 
-export type Regions = {
+export type Region = {
   id: number
   title: string
 }
 
-export type RegionsState = {
-  loading: boolean
-  error: boolean
-  data: Regions[]
-}
+export type RegionsState = ErrorAndPendingAwareState<Region[]>
 
 const initialState: RegionsState = {
-  loading: false,
-  data: [],
+  pending: false,
+  data: undefined,
   error: false
 }
 
@@ -42,7 +39,7 @@ const regionsSlice = createSlice({
   }
 })
 
-export const selectRegionsData = (state: RootState): Regions[] => (
+export const selectRegionsData = (state: RootState): Region[] | undefined => (
   state.regions.data
 )
 
