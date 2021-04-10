@@ -4,42 +4,49 @@ import { Trail } from '../../../redux/slices/trail'
 import { Link } from 'wouter'
 import { composeTrailDetailPageUri } from '../../../misc/uri'
 import {fetchRegions} from "../../../redux/api/fetchRegions";
-import {selectRegionsData} from "../../../redux/slices/regions";
+import {selectRegionsData} from "../../../redux/slices/region";
+import {Col, Row} from "react-bootstrap";
 
-type CategoryPropsType = {
+type RegionProps = {
   trails: Trail[] | undefined
 }
 
-const Regions: React.FunctionComponent<CategoryPropsType> = ({ trails }) => {
+const Regions: React.FunctionComponent<RegionProps> = ({ trails }) => {
   const dispatch = useTypedDispatch()
-  const regions = useTypedSelector(selectRegionsData)
+  const regions = useTypedSelector(state => selectRegionsData(state))
 
   useEffect(() => {
-    if (regions.length > 0) return
-    dispatch(fetchRegions())
+    if (regions === undefined) {
+      dispatch(fetchRegions())
+    }
   }, [dispatch, regions])
 
   const getTrailsForCategory = (id: number): Trail[] => {
     if (trails === undefined) return []
     return trails.filter((trail) => trail.region === id)
   }
+
   return (
-    <>
-      {regions.map((region) => (
-          <dl className="row" key={region.id}>
-            <dt className="col">{region.title}</dt>
-            {getTrailsForCategory(region.id).length === 0 && <div>Keine Trails gefunden</div>}
-            {getTrailsForCategory(region.id).map((trail) => (
-                <dd className="col" key={trail.id}>
-                  <Link to={composeTrailDetailPageUri(trail.id)}>
-                    {trail.title}
-                  </Link>
-                </dd>
-            ))}
-          </dl>
-      ))
-      }
-    </>
+      <Row>
+        <Col>
+          {regions === undefined || regions.length === 0 ? (
+              <h2>Keine Region gefunden. </h2>
+          ) : (regions.map((region) => (
+                <dl className="row" key={region.id}>
+                  <dt className="col">{region.title}</dt>
+                  {getTrailsForCategory(region.id).length === 0 && <div>Keine Trails für diese Region vorhanden.</div>}
+                  {getTrailsForCategory(region.id).map((trail) => (
+                      <dd className="col" key={trail.id}>
+                        <Link to={composeTrailDetailPageUri(trail.id)}>
+                          {trail.title}
+                        </Link>
+                      </dd>
+                  ))}
+                </dl>
+            )))
+          }
+        </Col>
+      </Row>
   )
 }
 

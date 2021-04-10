@@ -13,11 +13,12 @@ import {selectTrailsData} from "../../redux/slices/trail";
 
 const App: React.FunctionComponent = () => {
   const dispatch = useTypedDispatch()
-  const trails = useTypedSelector(selectTrailsData)
+  const trails = useTypedSelector(state => selectTrailsData(state))
 
   useEffect(() => {
-    if (trails.length > 0 ) return
-    dispatch(fetchTrails())
+    if (trails === undefined) {
+      dispatch(fetchTrails())
+    }
   }, [dispatch, trails])
 
   return (
