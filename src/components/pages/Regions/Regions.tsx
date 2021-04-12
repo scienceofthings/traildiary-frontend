@@ -21,7 +21,7 @@ const Regions: React.FunctionComponent<RegionProps> = ({ trails }) => {
     }
   }, [dispatch, regions])
 
-  const getTrailsForCategory = (id: number): Trail[] => {
+  const getTrailsForRegion = (id: number): Trail[] => {
     if (trails === undefined) return []
     return trails.filter((trail) => trail.region === id)
   }
@@ -34,8 +34,8 @@ const Regions: React.FunctionComponent<RegionProps> = ({ trails }) => {
           ) : (regions.map((region) => (
                 <dl className="row" key={region.id}>
                   <dt className="col">{region.title}</dt>
-                  {getTrailsForCategory(region.id).length === 0 && <div>Keine Trails für diese Region vorhanden.</div>}
-                  {getTrailsForCategory(region.id).map((trail) => (
+                  {getTrailsForRegion(region.id).length === 0 && <div>Keine Trails für diese Region vorhanden.</div>}
+                  {getTrailsForRegion(region.id).map((trail) => (
                       <dd className="col" key={trail.id}>
                         <Link to={composeTrailDetailPageUri(trail.id)}>
                           {trail.title}
