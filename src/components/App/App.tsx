@@ -10,6 +10,7 @@ import Regions from '../pages/Regions/Regions'
 import { Container } from 'react-bootstrap'
 import {fetchTrails} from "../../redux/api/fetchTrails";
 import {selectTrailsData} from "../../redux/slices/trail";
+import {composeRegionsPageUri} from "../../misc/uri";
 
 const App: React.FunctionComponent = () => {
   const dispatch = useTypedDispatch()
@@ -31,7 +32,7 @@ const App: React.FunctionComponent = () => {
           <Route path="/">
             <MapSearch />
           </Route>
-          <Route path="/categories">
+          <Route path={composeRegionsPageUri()}>
             <Regions trails={trails} />
           </Route>
           <Route path="/trails/:trailId">

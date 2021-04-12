@@ -2,7 +2,7 @@ import React from 'react'
 import { Nav, Navbar } from 'react-bootstrap'
 import { Link } from 'wouter'
 import {
-  composeCategoriesPageUri,
+  composeRegionsPageUri,
   composeMapSearchPageUri,
 } from '../../misc/uri'
 
@@ -13,7 +13,7 @@ const Navigation: React.FunctionComponent = () => {
         <Nav.Link as={Link} to={composeMapSearchPageUri()}>
           Karte
         </Nav.Link>
-        <Nav.Link as={Link} to={composeCategoriesPageUri()}>
+        <Nav.Link as={Link} to={composeRegionsPageUri()}>
           Nach Region
         </Nav.Link>
       </Nav>
