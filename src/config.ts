@@ -1,3 +1,3 @@
 export const config = {
-    apiUrlPrefix: ''
+    apiUrlPrefix: '/api'
 }
