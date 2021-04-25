@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
+import { MapContainer, Marker, Popup } from 'react-leaflet'
 import L from 'leaflet'
 import { Trail } from '../../../redux/slices/trail'
 import 'leaflet/dist/leaflet.css'
@@ -8,6 +8,7 @@ import icon from 'leaflet/dist/images/marker-icon.png'
 import iconShadow from 'leaflet/dist/images/marker-shadow.png'
 import {composeTrailDetailPageUri} from "../../../misc/uri";
 import {Link} from "wouter";
+import OpenstreetmapTileLayer from "../../common/OpenstreetmapTileLayer/OpenstreetmapTileLayer";
 
 // https://github.com/PaulLeCam/react-leaflet/issues/453
 const DefaultIcon = L.icon({
@@ -33,10 +34,7 @@ const TrailMap: React.FunctionComponent<props> = ({ trails, setMap }) => {
       center={[lat, lng]}
       whenCreated={setMap}
     >
-      <TileLayer
-        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        url="http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
+      <OpenstreetmapTileLayer />
       {trails && trails.length
         ? trails.map((trail) => (
             <Marker position={trail.start_position} key={trail.id}>

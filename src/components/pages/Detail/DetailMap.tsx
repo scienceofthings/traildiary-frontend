@@ -1,6 +1,7 @@
-import {MapContainer, Polyline, TileLayer} from 'react-leaflet'
+import {MapContainer, Polyline } from 'react-leaflet'
 import React, { useState } from 'react'
 import {TrailDetail} from '../../../redux/slices/trail'
+import OpenstreetmapTileLayer from "../../common/OpenstreetmapTileLayer/OpenstreetmapTileLayer";
 
 type DetailMapProps = {
   trail: TrailDetail
@@ -16,10 +17,7 @@ const DetailMap: React.FunctionComponent<DetailMapProps> = ({ trail }) => {
       zoom={zoom}
       center={[trail.start_position[0], trail.start_position[1]]}
     >
-      <TileLayer
-        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        url="http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
+      <OpenstreetmapTileLayer />
       <Polyline pathOptions={polyLineOptions} positions={trail.gpx_points} />
     </MapContainer>
   )
