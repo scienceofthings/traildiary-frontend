@@ -9,6 +9,7 @@ import iconShadow from 'leaflet/dist/images/marker-shadow.png'
 import {composeTrailDetailPageUri} from "../../../misc/uri";
 import {Link} from "wouter";
 import OpenstreetmapTileLayer from "../../common/OpenstreetmapTileLayer/OpenstreetmapTileLayer";
+import styles from './MapSearch.module.scss'
 
 // https://github.com/PaulLeCam/react-leaflet/issues/453
 const DefaultIcon = L.icon({
@@ -29,7 +30,7 @@ const TrailMap: React.FunctionComponent<props> = ({ trails, setMap }) => {
 
   return (
     <MapContainer
-      style={{ height: '280px', width: '100%' }}
+      className={styles.mapContainer}
       zoom={zoom}
       center={[lat, lng]}
       whenCreated={setMap}

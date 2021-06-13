@@ -1,7 +1,8 @@
 import {MapContainer, Polyline } from 'react-leaflet'
 import React, { useState } from 'react'
-import {TrailDetail} from '../../../redux/slices/trail'
-import OpenstreetmapTileLayer from "../../common/OpenstreetmapTileLayer/OpenstreetmapTileLayer";
+import {TrailDetail} from '../../../../redux/slices/trail'
+import OpenstreetmapTileLayer from "../../../common/OpenstreetmapTileLayer/OpenstreetmapTileLayer";
+import styles from './DetailMap.module.scss'
 
 type DetailMapProps = {
   trail: TrailDetail
@@ -13,7 +14,7 @@ const DetailMap: React.FunctionComponent<DetailMapProps> = ({ trail }) => {
 
   return (
     <MapContainer
-      style={{ height: '280px', width: '100%' }}
+      className={styles.mapContainer}
       zoom={zoom}
       center={[trail.start_position[0], trail.start_position[1]]}
     >

@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import { Button, Col, Row } from 'react-bootstrap'
-import DetailMap from './DetailMap'
+import DetailMap from './DetailMap/DetailMap'
 
 import styles from './Detail.module.scss'
 import ImageSection from './ImageSection'

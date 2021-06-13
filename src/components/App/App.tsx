@@ -27,7 +27,7 @@ const App: React.FunctionComponent = () => {
       <header>
         <Navigation />
       </header>
-      <Container>
+      <Container fluid>
         <main>
           <Route path="/">
             <MapSearch />
