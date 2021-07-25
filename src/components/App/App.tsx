@@ -1,45 +1,34 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { hot } from 'react-hot-loader/root'
-import { Route } from 'wouter'
-import { useTypedDispatch, useTypedSelector } from '../../redux'
 import './styles.module.scss'
-import MapSearch from '../pages/MapSearch/MapSearch'
-import Navigation from './Navigation'
-import Detail from '../pages/Detail/Detail'
-import Regions from '../pages/Regions/Regions'
+import NavigationProtected from './NavigationProtected'
 import { Container } from 'react-bootstrap'
-import {fetchTrails} from "../../redux/api/fetchTrails";
-import {selectTrailsData} from "../../redux/slices/trail";
-import {composeRegionsPageUri} from "../../misc/uri";
+import MainProtected from "./MainProtected";
+import MainPublic from "./MainPublic";
+import {useTypedSelector} from "../../redux";
+import {isAuthenticated} from "../../redux/slices/app";
+import NavigationPublic from "./NavigationPublic";
 
 const App: React.FunctionComponent = () => {
-  const dispatch = useTypedDispatch()
-  const trails = useTypedSelector(state => selectTrailsData(state))
 
-  useEffect(() => {
-    if (trails === undefined) {
-      dispatch(fetchTrails())
-    }
-  }, [dispatch, trails])
+  const userIsAuthenticated = useTypedSelector(isAuthenticated)
 
   return (
     <>
       <header>
-        <Navigation />
+          {userIsAuthenticated ? (
+            <NavigationProtected />
+              ) : (
+            <NavigationPublic />
+          )}
       </header>
       <Container fluid>
         <main>
-          <Route path="/">
-            <MapSearch />
-          </Route>
-          <Route path={composeRegionsPageUri()}>
-            <Regions trails={trails} />
-          </Route>
-          <Route path="/trails/:trailId">
-            {(params) => (
-              <Detail trailId={parseInt(params.trailId)} />
-            )}
-          </Route>
+          {userIsAuthenticated ? (
+            <MainProtected />
+          ) : (
+            <MainPublic />
+          )}
         </main>
       </Container>
     </>

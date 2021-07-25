@@ -1,3 +1,3 @@
 import {config} from "../config";
 
-export const getRegionsEndpoint = (): string => (`${config.apiUrlPrefix}/regions`)
+export const getRegionsEndpoint = (): string => (`${config.apiUrlPrefix}/regions/`)
