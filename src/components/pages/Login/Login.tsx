@@ -31,8 +31,7 @@ const Login:React.FunctionComponent = () => {
     }
     return (
         <Row>
-            <Col/>
-            <Col>
+            <Col sm={{span: 4, offset: 4}}>
                     <Form>
                         <Form.Group className="mb-3">
                             <Form.Label>Email-Adresse</Form.Label>
@@ -63,7 +62,6 @@ const Login:React.FunctionComponent = () => {
                         </Button>
                     </Form>
             </Col>
-            <Col/>
         </Row>
     )
 }
