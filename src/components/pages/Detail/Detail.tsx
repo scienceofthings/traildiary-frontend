@@ -30,7 +30,7 @@ const Detail: React.FunctionComponent<DetailProps> = ({ trailId }) => {
       </Row>
         <Row>
             <Col>
-                <a href={trailDetails.gpx_file_name}>
+                <a href={trailDetails.gpx_file_name} download>
                     <Button>Download GPX</Button>
                 </a>
             </Col>
