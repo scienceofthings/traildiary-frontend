@@ -7,6 +7,7 @@ import {fetchRegions} from "../../../redux/api/fetchRegions";
 import {selectRegionsData} from "../../../redux/slices/region";
 import {Col, Row, ListGroup, ListGroupItem } from "react-bootstrap";
 import styles from './Regions.module.scss'
+import Headline from "../../common/Headline/Headline";
 
 type RegionProps = {
   trails: Trail[] | undefined
@@ -31,10 +32,12 @@ const Regions: React.FunctionComponent<RegionProps> = ({ trails }) => {
       <Row>
         <Col>
           {regions === undefined || regions.length === 0 ? (
-              <h2>Keine Region gefunden. </h2>
+              <Headline>Keine Region gefunden. </Headline>
           ) : (
               <>
-                <h2>Übersicht der Regionen</h2>
+                <Headline>
+                  Übersicht der Regionen
+                </Headline>
                 <ListGroup>
                   {regions.map((region) => (
                       <ListGroupItem key={region.id}>

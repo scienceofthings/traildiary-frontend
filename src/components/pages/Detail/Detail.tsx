@@ -7,6 +7,7 @@ import ImageSection from './ImageSection'
 import {useTypedDispatch, useTypedSelector} from "../../../redux";
 import {fetchTrail} from "../../../redux/api/fetchTrail";
 import {selectTrailData} from "../../../redux/slices/trail";
+import Headline from "../../common/Headline/Headline";
 
 type DetailProps = {
   trailId: number
@@ -37,19 +38,19 @@ const Detail: React.FunctionComponent<DetailProps> = ({ trailId }) => {
         </Row>
       <Row>
         <Col>
-          <h1>{trailDetails.title}</h1>
+          <Headline as="h1">{trailDetails.title}</Headline>
         </Col>
       </Row>
       <Row>
         <Col>
-          <h2>Beschreibung</h2>
+          <Headline>Beschreibung</Headline>
           {trailDetails.description}
         </Col>
       </Row>
       {trailDetails.technique.length > 0 && (
         <Row>
           <Col>
-              <h2>Technik</h2>
+              <Headline>Technik</Headline>
             {trailDetails.technique}
           </Col>
         </Row>
@@ -57,7 +58,7 @@ const Detail: React.FunctionComponent<DetailProps> = ({ trailId }) => {
         {trailDetails.todo.length > 0 && (
             <Row>
                 <Col>
-                    <h2>Todo</h2>
+                    <Headline>Todo</Headline>
                     {trailDetails.todo}
                 </Col>
             </Row>

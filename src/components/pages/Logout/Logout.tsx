@@ -5,6 +5,7 @@ import {purgeToken} from "../../../misc/jsonWebToken";
 import {useTypedDispatch} from "../../../redux";
 import {composeLoginPageUri} from "../../../misc/uri";
 import {logout} from "../../../redux/slices/app";
+import Headline from "../../common/Headline/Headline";
 
 const Logout:React.FunctionComponent = () => {
     const dispatch = useTypedDispatch()
@@ -18,7 +19,8 @@ const Logout:React.FunctionComponent = () => {
     return (
         <Row>
 
-            <Col>
+            <Col sm={{offset: 4, span: 4}}>
+                <Headline>Wirklich abmelden?</Headline>
                         <Button variant="primary" onClick={onLogout}>
                             Logout
                         </Button>
