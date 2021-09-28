@@ -17,6 +17,7 @@ const DetailMap: React.FunctionComponent<DetailMapProps> = ({ trail }) => {
       className={styles.mapContainer}
       zoom={zoom}
       center={[trail.start_position[0], trail.start_position[1]]}
+      dragging={false}
     >
       <OpenstreetmapTileLayer />
       <Polyline pathOptions={polyLineOptions} positions={trail.gpx_points} />
