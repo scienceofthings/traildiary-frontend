@@ -8281,6 +8281,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"mini-css-extract-plugin@npm:2.4.5":
+  version: 2.4.5
+  resolution: "mini-css-extract-plugin@npm:2.4.5"
+  dependencies:
+    schema-utils: ^4.0.0
+  peerDependencies:
+    webpack: ^5.0.0
+  checksum: 09ad56ac33fd960c6a645a2a18b0fee22c34c8e48e91fc48acc5ac3b9c101a5e9ea50d168b94c9fcdf571265271f6e4dd4fea835b2242907d4311b170aff322f
+  languageName: node
+  linkType: hard
+
 "mini-css-extract-plugin@npm:^2.4.5":
   version: 2.5.0
   resolution: "mini-css-extract-plugin@npm:2.5.0"
@@ -12099,6 +12110,7 @@ __metadata:
     eslint-plugin-react-hooks: ^4.3.0
     eslint-plugin-typescript-sort-keys: ^2.1.0
     leaflet: ^1.7.1
+    mini-css-extract-plugin: 2.4.5
     prettier: ^2.5.1
     react: ^17.0.2
     react-app-rewire-hot-loader: ^2.0.1
