@@ -26,7 +26,7 @@ export const authenticate = createAsyncThunk<AuthenticationResponse, Authenticat
     if (!response.ok) return thunkApi.rejectWithValue(await response.json())
 
     const result = await response.json()
-    localStorage.setItem('jwt', result.token)
+    localStorage.setItem('jwt', result.access)
 
     return result
 })
