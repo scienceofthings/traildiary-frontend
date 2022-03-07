@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { MapContainer, Marker, Popup } from 'react-leaflet'
 import L from 'leaflet'
-import { Trail } from '../../../redux/slices/trail'
+import {Trail} from '../../../redux/slices/trail'
 import 'leaflet/dist/leaflet.css'
 import 'leaflet/dist/leaflet.css'
 import icon from 'leaflet/dist/images/marker-icon.png'
@@ -10,6 +10,7 @@ import {composeTrailDetailPageUri} from "../../../misc/uri";
 import {Link} from "wouter";
 import OpenstreetmapTileLayer from "../../common/OpenstreetmapTileLayer/OpenstreetmapTileLayer";
 import styles from './MapSearch.module.scss'
+import {LatLngAndZoomLevel} from "../../App/MainProtected";
 
 // https://github.com/PaulLeCam/react-leaflet/issues/453
 const DefaultIcon = L.icon({
@@ -18,21 +19,18 @@ const DefaultIcon = L.icon({
 })
 L.Marker.prototype.options.icon = DefaultIcon
 
-type props = {
+type Props = {
   trails: Trail[]
   setMap: (map: L.Map) => void
+  mapState: LatLngAndZoomLevel
 }
 
-const TrailMap: React.FunctionComponent<props> = ({ trails, setMap }) => {
-  const [lat] = useState(47.9959)
-  const [lng] = useState(7.85222)
-  const [zoom] = useState(13)
-
+const TrailMap: React.FunctionComponent<Props> = ({ trails, setMap, mapState }) => {
   return (
     <MapContainer
       className={styles.mapContainer}
-      zoom={zoom}
-      center={[lat, lng]}
+      zoom={mapState.zoomLevel}
+      center={[mapState.lat, mapState.lng]}
       whenCreated={setMap}
     >
       <OpenstreetmapTileLayer />

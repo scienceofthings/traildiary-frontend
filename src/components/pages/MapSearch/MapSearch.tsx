@@ -1,20 +1,48 @@
-import React, { useState } from 'react'
+import React, {useCallback, useEffect, useState} from 'react'
 import TrailMap from './TrailMap'
 import VisibleTrails from './VisibleTrails'
 import { useTypedSelector } from '../../../redux'
 import L from 'leaflet'
 import {selectTrailsData} from "../../../redux/slices/trail";
+import {LatLngAndZoomLevel} from "../../App/MainProtected";
 
-const MapSearch: React.FunctionComponent = () => {
+type MapSearchProps = {
+  mapState: LatLngAndZoomLevel
+  setMapState: (mapState: LatLngAndZoomLevel) => void
+}
+
+const MapSearch: React.FunctionComponent<MapSearchProps> = ({
+  mapState,
+  setMapState
+}) => {
   const [map, setMap] = useState<L.Map>()
 
   const trails = useTypedSelector(selectTrailsData)
+
+
+
+  const onMoveEnd = useCallback(() => {
+    if (map === undefined) return
+    setMapState({
+      lat: map.getCenter().lat,
+      lng: map.getCenter().lng,
+      zoomLevel: map?.getZoom()})
+  }, [map, setMapState])
+
+  useEffect(() => {
+    onMoveEnd()
+    if (map === undefined) return
+    map.on('move', onMoveEnd)
+    return () => {
+      map.off('move', onMoveEnd)
+    }
+  }, [map, onMoveEnd])
 
   return (
     <>
       {trails ? (
         <>
-          <TrailMap trails={trails} setMap={setMap} />
+          <TrailMap trails={trails} setMap={setMap} mapState={mapState} />
           {map !== undefined && <VisibleTrails trails={trails} map={map} />}
         </>
       ) : (
