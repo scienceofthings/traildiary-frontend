@@ -8,9 +8,9 @@ import icon from 'leaflet/dist/images/marker-icon.png'
 import iconShadow from 'leaflet/dist/images/marker-shadow.png'
 import {composeTrailDetailPageUri} from "../../../misc/uri";
 import {Link} from "wouter";
-import OpenstreetmapTileLayer from "../../common/OpenstreetmapTileLayer/OpenstreetmapTileLayer";
 import styles from './MapSearch.module.scss'
 import {LatLngAndZoomLevel} from "../../App/MainProtected";
+import {TileLayer} from "../../common/TileLayer";
 
 // https://github.com/PaulLeCam/react-leaflet/issues/453
 const DefaultIcon = L.icon({
@@ -33,7 +33,7 @@ const TrailMap: React.FunctionComponent<Props> = ({ trails, setMap, mapState }) 
       center={[mapState.lat, mapState.lng]}
       whenCreated={setMap}
     >
-      <OpenstreetmapTileLayer />
+      <TileLayer />
       {trails && trails.length
         ? trails.map((trail) => (
             <Marker position={trail.start_position} key={trail.id}>
