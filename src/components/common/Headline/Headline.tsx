@@ -4,6 +4,7 @@ import styles from './Headline.module.scss'
 
 type HeadingProps = {
     as?: 'h1' | 'h2'
+    children: React.ReactNode
 }
 
 const Headline: React.FunctionComponent<HeadingProps> = ({

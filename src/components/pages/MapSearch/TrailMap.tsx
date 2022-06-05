@@ -25,13 +25,12 @@ type Props = {
   mapState: LatLngAndZoomLevel
 }
 
-const TrailMap: React.FunctionComponent<Props> = ({ trails, setMap, mapState }) => {
-  return (
+const TrailMap: React.FunctionComponent<Props> = ({ trails, setMap, mapState }) => (
     <MapContainer
       className={styles.mapContainer}
       zoom={mapState.zoomLevel}
       center={[mapState.lat, mapState.lng]}
-      whenCreated={setMap}
+      ref={setMap}
     >
       <TileLayer />
       {trails && trails.length
@@ -43,6 +42,5 @@ const TrailMap: React.FunctionComponent<Props> = ({ trails, setMap, mapState }) 
         : ''}
     </MapContainer>
   )
-}
 
 export default TrailMap

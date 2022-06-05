@@ -15,14 +15,12 @@ const MapSearch: React.FunctionComponent<MapSearchProps> = ({
   mapState,
   setMapState
 }) => {
-  const [map, setMap] = useState<L.Map>()
+  const [map, setMap] = useState<L.Map | null>(null)
 
   const trails = useTypedSelector(selectTrailsData)
 
-
-
   const onMoveEnd = useCallback(() => {
-    if (map === undefined) return
+    if (map === null) return
     setMapState({
       lat: map.getCenter().lat,
       lng: map.getCenter().lng,
@@ -30,8 +28,8 @@ const MapSearch: React.FunctionComponent<MapSearchProps> = ({
   }, [map, setMapState])
 
   useEffect(() => {
+    if (map === null) return
     onMoveEnd()
-    if (map === undefined) return
     map.on('move', onMoveEnd)
     return () => {
       map.off('move', onMoveEnd)
@@ -43,7 +41,7 @@ const MapSearch: React.FunctionComponent<MapSearchProps> = ({
       {trails ? (
         <>
           <TrailMap trails={trails} setMap={setMap} mapState={mapState} />
-          {map !== undefined && <VisibleTrails trails={trails} map={map} />}
+          {map !== null &&  <VisibleTrails trails={trails} map={map} />}
         </>
       ) : (
         <b>Keine Trails vorhanden</b>

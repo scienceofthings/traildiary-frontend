@@ -1,15 +1,16 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import store from './redux/store'
 import App from './components/App/App'
 import 'bootstrap/dist/css/bootstrap.css'
+import {createRoot} from "react-dom/client";
 
-ReactDOM.render(
+const container = document.getElementById('map-container') as HTMLElement
+const root = createRoot(container)
+root.render(
   <Provider store={store}>
     <App />
-  </Provider>,
-  document.getElementById('map-container')
+  </Provider>
 )
 
 // If you want your app to work offline and load faster, you can change
