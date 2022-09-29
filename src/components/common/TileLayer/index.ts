@@ -1,1 +1,1 @@
-export { default as TileLayer } from './OpenstreetmapTileLayer'
+export { default as TileLayer } from './OpentopomapTileLayer'
