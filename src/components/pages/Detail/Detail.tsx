@@ -44,7 +44,7 @@ const Detail: React.FunctionComponent<DetailProps> = ({ trailId }) => {
       <Row>
         <Col>
           <Headline>Beschreibung</Headline>
-          {trailDetails.description}
+            <div dangerouslySetInnerHTML={{__html:  trailDetails.description}}></div>
         </Col>
       </Row>
       {trailDetails.technique.length > 0 && (
