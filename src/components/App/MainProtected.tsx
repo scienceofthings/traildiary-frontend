@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import {Route, Switch} from "wouter";
+import {Redirect, Route, Switch} from "wouter";
 import MapSearch from "../pages/MapSearch/MapSearch";
 import {composeRegionsPageUri} from "../../misc/uri";
 import Regions from "../pages/Regions/Regions";
@@ -39,10 +39,16 @@ const MainProtected: React.FunctionComponent = () => {
             </Route>
             <Route path="/trails/:trailId">
                 {(params) => (
-                    <Detail trailId={parseInt(params.trailId)} />
+                    params.trailId === undefined ?
+                        <h1>Trail nicht gefunden</h1> :
+                        <Detail trailId={parseInt(params.trailId)} />
+
                 )}
             </Route>
             <Route path="/logout" component={Logout}/>
+            <Route path="/login">
+                <Redirect to={"/"} />
+            </Route>
         </Switch>
     )
 }
