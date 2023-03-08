@@ -36,7 +36,7 @@ const Regions: React.FunctionComponent<RegionProps> = ({ trails }) => {
           ) : (
               <>
                 <Headline>
-                  Übersicht der Regionen
+                  Alle Regionen
                 </Headline>
                 <ListGroup>
                   {regions.map((region) => (
