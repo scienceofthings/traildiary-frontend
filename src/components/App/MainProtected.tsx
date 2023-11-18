@@ -7,7 +7,6 @@ import Detail from "../pages/Detail/Detail";
 import {useTypedDispatch, useTypedSelector} from "../../redux";
 import {selectTrailsData} from "../../redux/slices/trail";
 import {fetchTrails} from "../../redux/api/fetchTrails";
-import Logout from "../pages/Logout/Logout";
 import {LatLngLiteral} from "leaflet";
 
 export type LatLngAndZoomLevel = LatLngLiteral & { zoomLevel: number}
@@ -45,7 +44,6 @@ const MainProtected: React.FunctionComponent = () => {
 
                 )}
             </Route>
-            <Route path="/logout" component={Logout}/>
             <Route path="/login">
                 <Redirect to={"/"} />
             </Route>

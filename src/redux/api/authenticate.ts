@@ -1,17 +1,13 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import {getAuthenticationEndpoint} from "../../api/authenticate";
 
-type AuthenticationResponse = {
-    token: string
-}
-
 type AuthenticationParameters = {
     username: string,
     password: string
 }
 
-export const authenticate = createAsyncThunk<AuthenticationResponse, AuthenticationParameters>(
-    'authentication/login',
+export const authenticate = createAsyncThunk<undefined, AuthenticationParameters>(
+    'authenticate',
     async (arg, thunkApi) => {
     const credentials = {
         username: arg.username,
@@ -24,9 +20,4 @@ export const authenticate = createAsyncThunk<AuthenticationResponse, Authenticat
     })
 
     if (!response.ok) return thunkApi.rejectWithValue(await response.json())
-
-    const result = await response.json()
-    localStorage.setItem('jwt', result.access)
-
-    return result
 })

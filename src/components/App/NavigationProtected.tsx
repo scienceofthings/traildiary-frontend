@@ -3,7 +3,7 @@ import { Nav, Navbar } from 'react-bootstrap'
 import { Link } from 'wouter'
 import {
   composeRegionsPageUri,
-  composeMapSearchPageUri, composeLogoutPageUri,
+  composeMapSearchPageUri
 } from '../../misc/uri'
 
 const NavigationProtected: React.FunctionComponent = () => {
@@ -16,9 +16,6 @@ const NavigationProtected: React.FunctionComponent = () => {
         </Nav.Link>
         <Nav.Link as={Link} to={composeRegionsPageUri()}>
           Nach Region
-        </Nav.Link>
-        <Nav.Link as={Link} to={composeLogoutPageUri()}>
-            Logout
         </Nav.Link>
       </Nav>
     </Navbar>
