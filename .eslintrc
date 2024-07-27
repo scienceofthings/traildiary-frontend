@@ -6,7 +6,6 @@
     },
     "plugins": [
         "@typescript-eslint",
-        "react",
         "react-hooks",
         "typescript-sort-keys"
     ],
