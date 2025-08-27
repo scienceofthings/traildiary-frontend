@@ -4,6 +4,10 @@ on:
   push:
     branches: [ "master" ]
 
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false    
+
 jobs:
   build:
 
@@ -36,7 +40,9 @@ jobs:
           TARGET: ${{ secrets.REMOTE_TARGET }}
           SCRIPT_AFTER_REQUIRED: true
           SCRIPT_AFTER: |
+            set -e
             cd ${{ secrets.PATH_TO_FRONTEND_REPO }}
             git pull
-            npm ci
+            # Lock-basiertes npm ci um Race Conditions zu vermeiden
+            flock -x -w 300 /tmp/npm-ci.lock npm ci --production
             supervisorctl restart frontend-daemon
