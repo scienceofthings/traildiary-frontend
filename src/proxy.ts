@@ -17,7 +17,7 @@ export const config = {
 const protectedRoutes = ['/detail/:id', '/regions', "/"]
 const authRoutes = [config.matcher[3]]
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
     const userIsAuthenticated = request.cookies.get('user_is_authenticated')
     if(currentPathMatchesRoute(request.nextUrl.pathname, protectedRoutes) && !userIsAuthenticated) {
         const response = NextResponse.redirect(new URL("/login", request.url))

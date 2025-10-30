@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
     "test": "jest",
     "type-check": "tsc --noEmit --incremental"
   },
@@ -14,11 +14,11 @@
   "dependencies": {
     "bootstrap": "^5",
     "leaflet": "^1",
-    "next": "^15",
+    "next": "16.0.1",
     "path-to-regexp": "^8",
-    "react": "^19",
+    "react": "19.2.0",
     "react-bootstrap": "^2",
-    "react-dom": "^19",
+    "react-dom": "19.2.0",
     "react-leaflet": "^5",
     "sass": "^1",
     "swr": "^2",
@@ -31,15 +31,19 @@
     "@testing-library/react": "^16.3.0",
     "@types/jest": "^30.0.0",
     "@types/node": "^24",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
     "eslint": "^9",
-    "eslint-config-next": "^15",
+    "eslint-config-next": "16.0.1",
     "eslint-config-prettier": "^10",
     "jest": "^30.2.0",
     "jest-environment-jsdom": "^30.2.0",
     "postcss": "^8",
     "ts-node": "^10.9.2",
     "typescript": "^5"
+  },
+  "overrides": {
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2"
   }
 }
